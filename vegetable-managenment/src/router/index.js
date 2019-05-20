@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import login from '@/components/login'
-import home from '@/components/home'
+import main from '@/components/main'
+import sellgoods from '@/components/sellgoods'
+import addgoods from '@/components/addgoods'
 
 Vue.use(Router)
 
@@ -9,13 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'login',
-      component: login
-    },
-    {
-      path:'/home',
-      name:'home',
-      component:home
+      component: main,
+      children:[
+        {
+          path:'sellgoods',
+          component:sellgoods
+        },
+        {
+          path:'addgoods',
+          component:addgoods
+        }
+
+      ]
     }
   ]
 })

@@ -1,7 +1,5 @@
 <template>
-    <h1>
-        <span>hhh</span>
-    </h1>
+<h1>add</h1>
 </template>
 <script>
 </script>
