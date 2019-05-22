@@ -19,12 +19,12 @@
         <ul> <img :src= ordersManage.img class="img"><span>订单管理</span>
         <img src="../assets/更多.png" @click="showScroll2 = !showScroll2" v-if="showScroll2"  class="scroll"  >
         <img src="../assets/展开.png" @click="showScroll2 = !showScroll2" v-else  class="scroll" >
-        <li v-for="i in ordersManage.message" v-show="showScroll2">
-           {{i}}
-       </li>
+        <li v-for="(i,index) in ordersManage.message" v-show="showScroll2">
+             <router-link  :to= ordersManage.router[index]> {{i}}</router-link>
+        </li>
         </ul>
-        <ul> <img :src= memberManage.img class="img"><span>会员管理</span></ul>
-        <ul> <img :src= dataManage.img class="img"><span>数据统计</span></ul>   
+        <ul><img :src= memberManage.img class="img"><span>  <router-link  :to= memberManage.router>会员管理</router-link></span></ul>
+        <ul> <img :src= dataManage.img class="img"><span><router-link  :to=  dataManage.router>数据统计</router-link></span></ul>   
     </div>
     <div class="right">
         <router-view></router-view>
@@ -55,7 +55,7 @@ export default{
             },
             dataManage:{
                 img:require('../assets/数据统计.png'),
-                router:'damamage'
+                router:'damanage'
             }
         }
     },
