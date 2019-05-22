@@ -1,0 +1,139 @@
+.head select {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	width: 128px;
+	height: 32px;
+	color: #777777;
+	padding-left: 20px;
+	background: #FFFFFF;
+	border: 1px solid #ECECEC;
+	border-radius: 4px;
+}
+
+.head button {
+	width: 64px;
+	height: 32px;
+	line-height: 30px;
+	background: #1CB906;
+	border-radius: 4px;
+	font-family: MicrosoftYaHei;
+	font-size: 14px;
+	color: #FFFFFF;
+	outline: none;
+	margin: 0;
+	padding: 0;
+	margin-left: 40px;
+}
+
+table {
+	font-family: MicrosoftYaHei;
+	font-size: 14px;
+	color: #666666;
+	width: 1632px;
+	margin-top: 20px;
+	border-collapse: collapse;
+}
+
+table tr:first-child {
+	width: 1632px;
+	height: 48px;
+	background: #F5FAFF;
+	border-radius: 12px 12px 0 0;
+}
+
+.middle button {
+	width: 76px;
+	height: 28px;
+	padding: 0;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #666666;
+	background-color: white;
+	outline: none;
+	border: 1px solid #979797;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.middle {
+	margin-top: 13px;
+	margin-bottom: 13px;
+}
+
+.middle img {
+	width: 14px;
+	height: 14px;
+	margin-right: 5px;
+	margin-left: 24px;
+}
+
+.middle span {
+	margin-right: 10px;
+}
+
+.head span {
+	font-family: MicrosoftYaHei;
+	font-size: 12px;
+	color: #666666;
+}
+
+.vege-img {
+	width: 78px;
+	height: 78px;
+	background: #FFFFFF;
+	border: 1px solid #F1F1F1;
+	border-radius: 4px;
+	display: inline-block;
+	margin-left: 10px;
+	vertical-align: center;
+
+}
+
+.vege-img img {
+	width: 60px;
+	height: 60px;
+	margin: 9px 9px;
+
+}
+
+table tr {
+	height: 110px;
+	border-bottom: #e2e2e2 solid 1px;
+
+}
+
+.goodsname {
+	display: flex;
+	align-items: center;
+	margin-left: 24px;
+	margin-top: 13px;
+}
+
+.goodsname p {
+	width: 175px;
+	font-family: MicrosoftYaHei;
+	font-size: 14px;
+	color: #222222;
+	line-height: 19px;
+	display: inline-block;
+	margin-left: 15px;
+}
+
+.model {
+	display: flex;
+	justify-content: space-around;
+}
+
+.model span {
+	margin-right: 10px;
+	color: #19A605;
+}
+
+.model span:hover {
+	cursor: pointer;
+}
+
+.origin-cost {
+	margin-left: 30px;
+}
