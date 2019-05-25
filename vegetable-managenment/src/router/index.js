@@ -12,8 +12,9 @@ import waitorders from '@/components/waitorders'
 import allorders from '@/components/allorders'
 import memanage from '@/components/memanage'
 import damanage from '@/components/damanage'
-
 Vue.use(Router)
+
+
 
 export default new Router({
   routes: [
