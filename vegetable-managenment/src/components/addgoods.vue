@@ -62,9 +62,11 @@
 <script>
 	export default {
 		name: "addgoods",
+		hash:'location.hash',
 		data() {
 			return {
 				number: undefined,
+
 				one: true,
 				two: true,
 				left: {
@@ -72,6 +74,7 @@
 					top: ["请输入商品产地", "请输入商品净含量", "请输入商品保质期", "请输入商品保存条件"],
 
 				},
+
 			}
 		},
 		methods: {
@@ -88,9 +91,12 @@
 			}
 		}
 	}
+	
 </script>
 
 
 <style scoped>
+
 	@import '../css/addgoods.css';
+
 </style>
