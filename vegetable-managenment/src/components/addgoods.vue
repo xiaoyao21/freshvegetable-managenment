@@ -35,14 +35,20 @@
 		name: "addgoods",
 		data() {
 			return {
-				number: undefined
+				number: undefined,
+				hash: location.hash
 			}
 		},
 		mounted() {
-			console.log(this.$route.query.num)
 			this.number = this.$route.query.num;
+		},
+		watch: {
+			$route: {
+				handler: function() {
+					this.number = undefined
+				}
+			}
 		}
-
 	}
 </script>
 
@@ -68,7 +74,7 @@
 		background-color: #1CB906;
 	}
 
-	.left input :nth-child(1){
+	.left input :nth-child(1) {
 		width: 362px;
 		height: 35px;
 		background: #F6F6F6;
