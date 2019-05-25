@@ -33,6 +33,7 @@
 <script>
 	export default {
 		name: "addgoods",
+		hash:'location.hash',
 		data() {
 			return {
 				number: undefined,
@@ -41,6 +42,7 @@
 		},
 		mounted() {
 			this.number = this.$route.query.num;
+<<<<<<< Updated upstream
 		},
 		watch: {
 			$route: {
@@ -49,6 +51,21 @@
 				}
 			}
 		}
+=======
+			console.log(this.number)
+		},
+		watch:{
+			  $route: {
+    			handler: function(val, oldVal){
+				  this.number = undefined
+				  console.log(1)
+    			},
+    		//深度观察监听
+    		deep: true
+			}
+
+>>>>>>> Stashed changes
+	}
 	}
 </script>
 
