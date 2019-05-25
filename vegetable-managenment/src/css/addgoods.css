@@ -1,0 +1,137 @@
+.all span {
+	font-family: MicrosoftYaHei;
+	font-size: 18px;
+	color: #222222;
+	font-weight: 900;
+}
+
+.title {
+	font-family: MicrosoftYaHei;
+	font-size: 20px;
+	font-weight: 900;
+	color: #222222;
+	margin-left: 20px;
+}
+
+.title span {
+	font-family: PingFangSC-Regular;
+	font-size: 20px;
+	color: #1CB906;
+	margin-left: 5px;
+}
+
+.title img {
+	width: 16px;
+	height: 16px;
+}
+
+.left {
+	width: 460px;
+	height: 630px;
+	margin-left: 20px;
+	background-color: #1CB906;
+}
+
+.left input {
+	width: 362px;
+	height: 35px;
+	background: #F6F6F6;
+	border-radius: 4px;
+}
+
+select {
+	background: #F6F6F6;
+	border-radius: 4px;
+	width: 180px;
+	height: 35px;
+}
+
+textarea {
+	width: 362px;
+	height: 169px;
+	resize: none;
+	background: #F6F6F6;
+	border-radius: 4px;
+	margin-left: 90px;
+	padding: 10px;
+	display: inline-block;
+	box-sizing: border-box;
+	border: none;
+}
+
+input {
+	outline: none;
+	padding-left: 20px;
+	width: 180px;
+	height: 35px;
+	background: #F6F6F6;
+	border-radius: 4px;
+	border: none;
+	box-sizing: border-box;
+}
+
+select:focus,
+textarea:focus,
+input:focus {
+	outline: none;
+}
+
+.mid {
+	position: relative;
+	width: 360px;
+	height: 500px;
+	margin-left: 40px;
+}
+
+.dis-left {
+	position: absolute;
+	right: 62%;
+}
+
+.dis-right {
+	position: absolute;
+	left: 41%;
+}
+
+.content {
+	display: flex;
+	align-items: flex-start;
+}
+
+.right {
+	position: relative;
+	width: 420px;
+	height: 500px;
+	margin-left: 60px;
+}
+
+.dit-left {
+	position: absolute;
+	right: 71%;
+}
+
+.dit-right {
+	position: absolute;
+	left: 32%;
+}
+
+.right img {
+	margin-left: 130px;
+}
+.backd,.opend{
+	width: 64px;
+	height: 32px;
+	border-radius: 4px;
+	border: none;
+}
+.backd{
+	border: 1px solid #979797;
+	background-color: white;
+	margin-left: 1100px;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+.opend{
+	background: #1CB906;
+	color: white;
+}
