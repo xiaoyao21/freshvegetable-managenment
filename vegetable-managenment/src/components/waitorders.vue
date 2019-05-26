@@ -19,7 +19,7 @@
 				<button>批量发货</button>
 
 			</div>
-            <div class="content">
+            <div class="Content">
                 <!-- 循环包裹的大div -->
                 <div class="content-index">
                     <div class="nav">
@@ -210,13 +210,13 @@ line-height: 17px;
 .content-index{
     margin-bottom: 20px;
 }
-.content{
+.Content{
     background: #FFFFFF;
 width: 1546px;
 margin-left: 24px;
 }
 .nav{
-    width: 1546px;
+    width: 1540px;
     height: 28px;
     background-color: #F1F1F1;
     padding:10px 0px 10px 0px;
@@ -243,6 +243,9 @@ font-size: 16px;
 color: #222222;
 letter-spacing: 0;
 margin-left: 10px;
+}
+.content-table{
+    width: 1540px;
 }
 .content-table tr{
     height: 116px;

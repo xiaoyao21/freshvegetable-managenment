@@ -6,6 +6,10 @@
             <span class="end">结束时间</span>
             <input type="text" class="date">
             <button>确定</button>
+            <div class="Find">
+            <input class="find" type="text" placeholder="请输入订单号或用户名称搜索"><span class="findimg">
+                <img src="../assets/搜索.png">
+            </span></div>
         </div>
         <div id="maintable">
             <div class="header">
@@ -19,7 +23,7 @@
 				<button>批量发货</button>
 
 			</div>
-            <div class="content">
+            <div class="Content">
                 <!-- 循环包裹的大div -->
                 <div class="content-index">
                     <div class="nav">
@@ -118,6 +122,10 @@ export default{
 }
 </script>
 <style scroped>
+.head{
+    width: 1631px;
+    position: relative;
+}
 .head span{
     font-family: PingFangSC-Regular;
 font-size: 12px;
@@ -178,7 +186,36 @@ line-height: 17px;
     margin-right: 15px;
 
 }
-
+.Find{
+    display: inline-block;
+    float: right;
+    margin-right:73px;
+}
+.find{
+    width: 239px;
+    height:32px;
+    background: #FFFFFF;
+    border: 1px solid #ECECEC;
+    border-radius: 4px;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+    color: #888888;
+    padding-left: 15px;
+}
+.findimg{
+    display: inline-block;
+    width: 37px;
+    height: 32px;
+    background: #1CB906;
+    border-radius: 0 4px 4px 0;
+    border-radius: 0px 4px 4px 0px;
+    padding-left:15px;
+    cursor: pointer;
+}
+.findimg img{
+    position: relative;
+    top:5px;
+}
 .middle{
     margin-top: 13px;
 	margin-bottom: 13px;
@@ -210,13 +247,13 @@ line-height: 17px;
 .content-index{
     margin-bottom: 20px;
 }
-.content{
+.Content{
     background: #FFFFFF;
 width: 1546px;
 margin-left: 24px;
 }
 .nav{
-    width: 1546px;
+    width: 1540px;
     height: 28px;
     background-color: #F1F1F1;
     padding:10px 0px 10px 0px;
@@ -243,6 +280,9 @@ font-size: 16px;
 color: #222222;
 letter-spacing: 0;
 margin-left: 10px;
+}
+.content-table{
+    width: 1540px;
 }
 .content-table tr{
     height: 116px;
