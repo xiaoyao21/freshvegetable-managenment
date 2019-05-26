@@ -26,7 +26,8 @@
 }
 
 table {
-	
+	box-shadow: 0 2px 10px 1px rgba(221, 229, 252, 0.50);
+	border-radius: 12px 12px 0 0;
 	font-family: MicrosoftYaHei;
 	font-size: 14px;
 	color: #666666;
@@ -90,7 +91,12 @@ table tr:first-child {
 	vertical-align: center;
 
 }
-
+button{
+	border:none;
+}
+button:hover{
+	cursor:pointer;
+}
 .vege-img img {
 	width: 60px;
 	height: 60px;
