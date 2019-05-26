@@ -99,7 +99,7 @@
 		width: 232px;
 		height: 1001px;
 		background-color: #1CB906;
-		
+
 		box-shadow: 0 2px 40px 1px rgba(221, 229, 252, 0.50);
 	}
 
@@ -157,5 +157,14 @@
 		color: white;
 		line-height: 48px;
 		cursor: pointer;
+	}
+
+	a {
+		text-decoration: none;
+		out-line: none;
+		opacity: 0.7;
+		font-family: MicrosoftYaHei;
+		font-size: 14px;
+		color: #FFFFFF;
 	}
 </style>

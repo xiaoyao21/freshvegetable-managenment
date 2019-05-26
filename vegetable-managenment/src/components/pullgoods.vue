@@ -37,7 +37,7 @@
 				<td><span>3244</span></td>
 				<td><span>244</span></td>
 				<td><span>某某供应商</span></td>
-				<td class="model"><span @click="edit(1)">编辑</span><span>重新上架</span><span>删除</span></td>
+				<td class="model"><span @click="edit(2)">编辑</span><span>重新上架</span><span>删除</span></td>
 			</tr>
 		</table>
 	</div>

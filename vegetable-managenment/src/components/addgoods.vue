@@ -1,7 +1,8 @@
 <template>
 	<div class="all">
 		<p v-if="number==undefined" class="title">添加新商品</p>
-		<p v-else class="title">在线商品管理<img src="../assets/箭头.png"><span>编辑</span></p>
+		<p v-else-if="number==1" class="title">在线商品管理<img src="../assets/箭头.png"><span>编辑</span></p>
+		<p v-else-if="number==2" class="title">已下架商品<img src="../assets/箭头.png"><span>编辑</span></p>
 		<div class="content">
 			<div class="left">
 				<span>商品名称：</span><input type="text" value="" placeholder="请输入21字以内的商品名称"><br><br>

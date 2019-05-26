@@ -22,16 +22,35 @@
 
 			<tr>
 				<td class="goodsname">
-
+			
 					<img src="../assets/未勾选.png">
 					<div class="vege-img"><img src="../assets/蔬菜.png" /></div>
 					<p>商品名称商品名称商品名称商品名称商品名称商品名称</p>
-
+			
 				</td>
-
+			
 				<td>
-					<p class="origin-cost">9.88</p>
-					<p>会员价：￥7.88</p>
+					<input value="300积分"  type="text" :disabled=disabled :class="{edid,noedid}"/> 
+					<img src="../assets/编辑.png" @click="edid_money"/>
+				</td>
+				<td><span>蔬菜</span></td>
+				<td><span>3244</span></td>
+				<td><span>244</span></td>
+				<td><span>某某供应商</span></td>
+				<td class="model"><span @click="edit(1)">编辑</span><span>下架</span></td>
+			</tr>
+			<tr>
+				<td class="goodsname">
+			
+					<img src="../assets/未勾选.png">
+					<div class="vege-img"><img src="../assets/蔬菜.png" /></div>
+					<p>商品名称商品名称商品名称商品名称商品名称商品名称</p>
+			
+				</td>
+			
+				<td>
+					<input value="300积分"  type="text" :disabled=disabled :class="{edid,noedid}"/> 
+					<img src="../assets/编辑.png" @click="edid_money"/>
 				</td>
 				<td><span>蔬菜</span></td>
 				<td><span>3244</span></td>
@@ -50,12 +69,19 @@
 			return {
 				classify: ['蔬菜', '水果', '海鲜', '肉蛋'],
 				supplier: ['某某供应商', '某某供应商', '某某供应商', '某某供应商'],
-
+				disabled:true,
+				edid:true,
+				noedid:false
 			}
 		},
 		methods: {
 			edit(num) {
 				this.$router.push({path:"addgoods",query:{num:num}})
+			},
+			edid_money(){
+				this.disabled=!this.disabled;
+				this.edid=!this.edid;
+				this.noedid=!this.noedid;
 			}
 		},
 	}
@@ -63,4 +89,16 @@
 
 <style scoped>
 	@import '../css/sellgoods.css';
+	
+	.edid{
+		background-color: white;
+		border: none;
+		width: 65px;
+		
+	}
+	.noedid{
+		width: 65px;
+		box-sizing: border-box;
+		
+	}
 </style>
