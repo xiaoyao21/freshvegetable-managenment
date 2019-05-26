@@ -7,14 +7,22 @@
 				<span>商品名称：</span><input type="text" value=""><br><br>
 				<span>商品简介：</span>
 				<textarea></textarea><br><br><br><br><br><br>
-				<span>添加图片：</span>
-				<div>
+
+				<div class="add-pic">
+					<span>添加图片：</span>
 					<span>+</span>
+					<input type="file" @change="uploadImg" id="filepicker" accept="image/*">
+					<template v-for="(pic,index) in pic_list">
+						<img :src="pic" />
+						<img class="delete" src="../assets/删除.png" @click="delete_img(index)" />
+					</template>
 				</div><br>
-				
-				<span>添加视频：</span>
-				<div>
+
+
+				<div class="add-vid">
+					<span>添加视频：</span>
 					<span>+</span>
+					
 				</div><br>
 			</div>
 
@@ -62,11 +70,12 @@
 <script>
 	export default {
 		name: "addgoods",
-		hash:'location.hash',
+		hash: 'location.hash',
 		data() {
 			return {
 				number: undefined,
-
+				pic_list: [],
+			
 				one: true,
 				two: true,
 				left: {
@@ -78,6 +87,23 @@
 			}
 		},
 		methods: {
+			uploadImg(e) {
+				let _this = this;
+				let files = e.target.files[0];
+				if (!e || !window.FileReader) return; // 看支持不支持FileReader
+				let reader = new FileReader();
+				reader.readAsDataURL(files); // 这里是最关键的一步，转换就在这里
+				reader.onloadend = function() {
+					_this.src = this.result;
+					_this.isShow = true;
+					_this.pic_list.push(_this.src);
+				}
+			},
+			delete_img(value) {
+				console.log(value)
+				this.pic_list.splice(value, 1);
+			}
+			
 
 		},
 		mounted() {
@@ -91,12 +117,9 @@
 			}
 		}
 	}
-	
 </script>
 
 
 <style scoped>
-
 	@import '../css/addgoods.css';
-
 </style>
