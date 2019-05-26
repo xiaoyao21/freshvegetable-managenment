@@ -79,7 +79,9 @@
 	.header {
 		width: 1920px;
 		height: 80px;
-		background-color: bisque;
+		background: #FFFFFF;
+		border: 1px solid #F5F4F5;
+		box-shadow: 0 2px 40px 1px rgba(221, 229, 252, 0.50);
 	}
 
 	.header p {
@@ -89,6 +91,7 @@
 		margin-top: 23px;
 		display: inline-block;
 		font-family: MicrosoftYaHei;
+		font-weight: 700;
 	}
 
 	.left {
@@ -96,12 +99,14 @@
 		width: 232px;
 		height: 1001px;
 		background-color: #1CB906;
+		
+		box-shadow: 0 2px 40px 1px rgba(221, 229, 252, 0.50);
 	}
 
 	.right {
 		margin-left: 28px;
 		display: inline-block;
-		
+
 		height: 981px;
 		width: 1632px;
 		margin-top: 20px;

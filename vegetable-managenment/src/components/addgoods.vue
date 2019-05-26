@@ -4,31 +4,33 @@
 		<p v-else class="title">在线商品管理<img src="../assets/箭头.png"><span>编辑</span></p>
 		<div class="content">
 			<div class="left">
-				<span>商品名称：</span><input type="text" value=""><br><br>
+				<span>商品名称：</span><input type="text" value="" placeholder="请输入21字以内的商品名称"><br><br>
 				<span>商品简介：</span>
-				<textarea></textarea><br><br><br><br><br><br>
+				<textarea placeholder="请输入商品简介"></textarea><br><br><br><br><br><br>
 
 				<div class="add-pic">
 					<span>添加图片：</span>
 					<span>+</span>
 					<input type="file" @change="uploadImg" id="filepicker" accept="image/*">
-					<template v-for="(pic,index) in pic_list">
-						<img :src="pic" />
-						<img class="delete" src="../assets/删除.png" @click="delete_img(index)" />
-					</template>
+					<div>
+						<template v-for="(pic,index) in pic_list">
+							<img :src="pic" />
+							<img class="delete" src="../assets/删除.png" @click="delete_img(index)" />
+						</template>
+					</div>
 				</div><br>
 
 
 				<div class="add-vid">
 					<span>添加视频：</span>
 					<span>+</span>
-					
+
 				</div><br>
 			</div>
 
 			<div class="mid">
-				<span class="dis-left">单位（元）：</span><input type="text" value="" class="dis-right"><br><br><br>
-				<span class="dis-left">会员价（元）：</span><input type="text" value="" class="dis-right"><br><br><br>
+				<span class="dis-left">单位（元）：</span><input type="text" value="" class="dis-right" placeholder="请输入商品单价"><br><br><br>
+				<span class="dis-left">会员价（元）：</span><input type="text" value="" class="dis-right" placeholder="请输入会员专属价"><br><br><br>
 				<span class="dis-left">商品分类：</span>
 				<select name="sel" class="dis-right">
 					<option value="1">蔬菜</option>
@@ -75,7 +77,6 @@
 			return {
 				number: undefined,
 				pic_list: [],
-			
 				one: true,
 				two: true,
 				left: {
@@ -103,8 +104,6 @@
 				console.log(value)
 				this.pic_list.splice(value, 1);
 			}
-			
-
 		},
 		mounted() {
 			this.number = this.$route.query.num;
