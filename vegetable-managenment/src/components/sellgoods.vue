@@ -50,12 +50,18 @@
 				<td class="model"><span @click="edit(1)">编辑</span><span>下架</span><span>删除</span></td>
 			</tr>
 		</table>
+		
+		<change></change>
 	</div>
 </template>
 
 <script>
+	import change from './change_pages'
 	export default {
 		name: "sellgoods",
+		components:{
+			change
+		},
 		data() {
 			return {
 				classify: ['蔬菜', '水果', '海鲜', '肉蛋'],
