@@ -3,12 +3,13 @@
 		<ul>
 			<span>上一页</span>
 			<li class="{click}">1</li>
-			<li >2</li>
-			<li >3</li>
-			<li >4</li>
-			<li >...</li>
-			<li >20</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>...</li>
+			<li>20</li>
 			<span>下一页</span>
+
 		</ul>
 	</div>
 </template>
@@ -16,6 +17,7 @@
 <script>
 	export default {
 		name: 'change',
+
 		data() {
 			return {
 
