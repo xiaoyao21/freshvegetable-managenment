@@ -8,13 +8,13 @@
 			</li>
 
 			<template v-if="pages>5" >
-				<li class="{click}">1</li>
+				<li >1</li>
 				<span v-show="show_left">...</span>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
+				<li >2</li>
+				<li >3</li>
+				<li >4</li>
 				<span v-show="show_right">...</span>
-				<li>{{pages}}</li>
+				<li >{{pages}}</li>
 			</template>
 
 			<span @click="page_right()">下一页</span>
@@ -38,7 +38,8 @@
 					one: !this.show_left,
 					two: this.show_left
 				},
-				currentPage:1
+				currentPage:1,
+				
 			}
 		},
 		methods: {
@@ -47,6 +48,7 @@
 				var target = e.target || e.srcElement;
 				this.currentPage = target.innerHTML;
 				console.log(this.currentPage)
+				// console.log(this.li[this.currentPage-1])
 
 			},
 			page_left() {
@@ -91,7 +93,7 @@
 		},
 		mounted() {
 			this.pages = 15;
-			console.log(this.$refs.ulul);
+			var currentPage = 1;
 			this.li = this.$refs.ulul.getElementsByTagName("li")
 		}
 	}
@@ -103,7 +105,7 @@
 		height: 38px;
 		line-height: 38px;
 		text-align: center;
-		background-color: #c6c6c6;
+		/* background-color: #c6c6c6; */
 		display: inline-block;
 		cursor: pointer;
 	}
@@ -121,4 +123,8 @@
 		background-color: #fff;
 		color: red;
 	}
+	
+	
+
+
 </style>
