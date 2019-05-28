@@ -29,8 +29,9 @@
 						<router-link :to=dataManage.router>数据统计</router-link>
 					</span></ul>
 			</div>
+			
 			<div class="right">
-				<router-view></router-view>
+				<!-- <router-view></router-view> -->
 			</div>
 		</div>
 	</div>
@@ -71,100 +72,5 @@
 	}
 </script>
 <style scoped>
-	* {
-		margin: 0;
-		padding: 0;
-	}
-
-	.header {
-		width: 1920px;
-		height: 80px;
-		background: #FFFFFF;
-		border: 1px solid #F5F4F5;
-		box-shadow: 0 2px 40px 1px rgba(221, 229, 252, 0.50);
-	}
-
-	.header p {
-		color: #1CB906;
-		font-size: 24px;
-		margin-left: 20px;
-		margin-top: 23px;
-		display: inline-block;
-		font-family: MicrosoftYaHei;
-		font-weight: 700;
-	}
-
-	.left {
-		float: left;
-		width: 232px;
-		height: 1001px;
-		background-color: #1CB906;
-
-		box-shadow: 0 2px 40px 1px rgba(221, 229, 252, 0.50);
-	}
-
-	.right {
-		margin-left: 28px;
-		display: inline-block;
-
-		height: 981px;
-		width: 1632px;
-		margin-top: 20px;
-	}
-
-	.content {
-		width: 1920px;
-		height: 1001px;
-	}
-
-	ul {
-		width: 232px;
-		background-color: #1CB906;
-		padding-bottom: 12px;
-	}
-
-	.img {
-		width: 16px;
-		height: 16px;
-		margin-left: 19px;
-		margin-top: 16px;
-		margin-right: 10px;
-	}
-
-	ul span {
-		/* margin-top: 5px; */
-		vertical-align: bottom;
-		display: inline-block;
-		color: white;
-		font-size: 14px;
-	}
-
-	.scroll {
-		/* margin-right: 40px; */
-		float: right;
-		margin-right: 18px;
-		margin-top: 17px;
-		cursor: pointer;
-		width: 18px;
-		height: 18px;
-	}
-
-	ul li {
-		height: 48px;
-		/* background-color: rgb(25, 166, 5); */
-		font-size: 14px;
-		margin-left: 46px;
-		color: white;
-		line-height: 48px;
-		cursor: pointer;
-	}
-
-	a {
-		text-decoration: none;
-		out-line: none;
-		opacity: 0.7;
-		font-family: MicrosoftYaHei;
-		font-size: 14px;
-		color: #FFFFFF;
-	}
+	@import "../css/main.css";
 </style>
