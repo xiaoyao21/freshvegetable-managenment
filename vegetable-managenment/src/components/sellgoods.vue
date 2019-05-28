@@ -51,7 +51,7 @@
 			</tr>
 		</table>
 
-		<!-- <change></change> -->
+		<change></change>
 	</div>
 
 
