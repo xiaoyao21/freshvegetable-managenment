@@ -32,12 +32,12 @@
 				show_right: true,
 				li: null,
 				style: {
-					one: true,
-					two: false,
+					one: true,//不可点
+					two: false,//可点
 				},
 				style1: {
-					one1: false,
-					two1: true,
+					one1: false,//不可点
+					two1: true,//可点
 				},
 				currentPage: 1,
 				now: 1
@@ -47,17 +47,14 @@
 			delegate() {
 				var e = e || window.event;
 				var target = e.target || e.srcElement;
-
-				if (this.currentPage != "...") {
-					this.currentPage = target.innerHTML;
-				}
+				this.currentPage = target.innerHTML;
 			},
 			page_left(haha) {
 				if (haha == 2)
 					if (this.currentPage > 1) {
 						this.currentPage--;
 					}
-
+				
 				if (this.currentPage >= 3 && this.pages - this.currentPage >= 3) {
 					this.li[1].innerHTML--;
 					this.li[2].innerHTML--;
@@ -70,34 +67,17 @@
 				if (this.currentPage == 3) {
 					this.show_left = false
 				}
-				if (this.currentPage == 1) {
-					this.style.one = true;
-					this.style.two = false;
-				} else {
-					this.style.one = false;
-					this.style.two = true;
-				}
-
-				if (this.currentPage == this.pages) {
-					this.style1.one1 = true;
-					this.style1.two1 = false;
-
-
-				} else {
-					this.style1.one1 = false;
-					this.style1.two1 = true;
-				}
+				
 
 			},
 			page_right(haha) {
-
-
 				if (haha == 2) {
 					if (this.currentPage < this.pages) {
 						this.currentPage++;
 					}
 				}
 
+				// 当前页数大于4的时候就要改变Li[1][2][3]中的值
 				if (this.currentPage >= 4 && this.pages - this.currentPage >= 2) {
 					this.li[1].innerHTML++;
 					this.li[2].innerHTML++;
@@ -105,28 +85,12 @@
 				}
 				if (this.li[1].innerHTML - 1 > 1) {
 					this.show_left = true
-
 				}
 				if (this.currentPage == this.pages - 2) {
 					this.show_right = false
 				}
-				if (this.currentPage == this.pages) {
-					this.style1.one1 = true;
-					this.style1.two1 = false;
 
-
-				} else {
-					this.style1.one1 = false;
-					this.style1.two1 = true;
-				}
-
-				if (this.currentPage == 1) {
-					this.style.one = true;
-					this.style.two = false;
-				} else {
-					this.style.one = false;
-					this.style.two = true;
-				}
+			
 
 			},
 			start() {
@@ -167,9 +131,23 @@
 		},
 		watch: {
 			currentPage: function(val) {
+				if (this.currentPage == 1) {
+					this.style.one = true;
+					this.style.two = false;
+				} else {
+					this.style.one = false;
+					this.style.two = true;
+				}
+
+				if (this.currentPage == this.pages) {
+					this.style1.one1 = true;
+					this.style1.two1 = false;
+				} else {
+					this.style1.one1 = false;
+					this.style1.two1 = true;
+				}
 				for (var i = 0; i < 5; i++) {
 					if (this.li[i].innerHTML == val) {
-						//console.log(this.li[i])
 						this.li[i].className = "sty"
 					} else {
 						this.li[i].className = ""
@@ -198,13 +176,14 @@
 		cursor: pointer;
 	}
 
+	/* one one1不可以点 */
 	.one,
 	.one1 {
 		cursor: default;
 		background-color: #fff;
 		color: red;
 	}
-
+	/* two two1可以点 */
 	.two,
 	.two1 {
 		color: #222222;
