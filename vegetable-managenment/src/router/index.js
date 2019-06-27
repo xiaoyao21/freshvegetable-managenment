@@ -12,12 +12,17 @@ import waitorders from '@/components/waitorders'
 import allorders from '@/components/allorders'
 import memanage from '@/components/memanage'
 import damanage from '@/components/damanage'
+import login from '@/components/login'
 Vue.use(Router)
 
 
 
 export default new Router({
   routes: [
+		{
+			path:'/login',
+			component:login
+		},
     {
       path: '/',
       component: main,
@@ -60,7 +65,6 @@ export default new Router({
          path:'damanage',
          component:damanage
        }
-
       ]
     }
   ],
