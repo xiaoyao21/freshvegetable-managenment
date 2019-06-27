@@ -25,19 +25,20 @@
 <script>
 	export default {
 		name: 'change',
+		props:["pagesd"],
 		data() {
 			return {
-				pages: null,
+				pages: null,  //传入的参数
 				show_left: false,
 				show_right: true,
 				li: null,
 				style: {
-					one: true,//不可点
-					two: false,//可点
+					one: true, //不可点
+					two: false, //可点
 				},
 				style1: {
-					one1: false,//不可点
-					two1: true,//可点
+					one1: false, //不可点
+					two1: true, //可点
 				},
 				currentPage: 1,
 				now: 1
@@ -54,7 +55,7 @@
 					if (this.currentPage > 1) {
 						this.currentPage--;
 					}
-				
+
 				if (this.currentPage >= 3 && this.pages - this.currentPage >= 3) {
 					this.li[1].innerHTML--;
 					this.li[2].innerHTML--;
@@ -67,8 +68,6 @@
 				if (this.currentPage == 3) {
 					this.show_left = false
 				}
-				
-
 			},
 			page_right(haha) {
 				if (haha == 2) {
@@ -89,9 +88,6 @@
 				if (this.currentPage == this.pages - 2) {
 					this.show_right = false
 				}
-
-			
-
 			},
 			start() {
 				this.delegate()
@@ -125,7 +121,8 @@
 		},
 
 		mounted() {
-			this.pages = 15;
+			this.pages = this.pagesd;
+			console.log(this.pagesd,this.pages,"hgdjksaghdjkasgdk")
 			this.currentPage = 1;
 			this.li = this.$refs.ulul.getElementsByTagName("li")
 		},
@@ -146,6 +143,7 @@
 					this.style1.one1 = false;
 					this.style1.two1 = true;
 				}
+
 				for (var i = 0; i < 5; i++) {
 					if (this.li[i].innerHTML == val) {
 						this.li[i].className = "sty"
@@ -153,6 +151,9 @@
 						this.li[i].className = ""
 					}
 				}
+			},
+			pagesd:function(){
+				this.pages=this.pagesd
 			}
 		}
 	}
@@ -183,6 +184,7 @@
 		background-color: #fff;
 		color: red;
 	}
+
 	/* two two1可以点 */
 	.two,
 	.two1 {

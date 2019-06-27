@@ -51,7 +51,7 @@
 			</tr>
 		</table>
 
-		<change></change>
+		<change :pagesd="page"></change>
 	</div>
 
 
@@ -68,7 +68,9 @@
 			return {
 				classify: ['蔬菜', '水果', '海鲜', '肉蛋'],
 				supplier: ['某某供应商', '某某供应商', '某某供应商', '某某供应商'],
-
+				obj:undefined,
+				list:undefined,
+				page:8
 			}
 		},
 		methods: {
@@ -81,6 +83,35 @@
 				})
 			}
 		},
+		// created() {
+		// 	this.page=4;
+		// },
+		mounted() {
+			
+			this.list=1;
+			this.page=4;
+// 			var xhr = new XMLHttpRequest();
+// 			var message = getParmer(object.data);
+// 			xhr.onreadystatechange = function() {
+// 				if (xhr.readyState == 4) {
+// 					var status = xhr.status;
+// 
+// 					if (status >= 200 && status < 300) {
+// 
+// 						// object.success(xhr.responseText, xhr.responseXML);
+// 						console.log(xhr.responseText);
+// 						this.obj=JSON.parse(xhr.responseText);
+// 						this.list=this.obj.list;
+// 						this.page=this.obj.pages
+// 						console.log(this.list)
+// 					} else {
+// 						console.log(xhr.status);
+// 					}
+// 				}
+// 			};
+// 				xhr.open("get", "http://xuptyzh.goho.co:30303/goods/query/1/1",false);
+// 				xhr.send(null);
+		}
 	}
 </script>
 
