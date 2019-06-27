@@ -70,6 +70,7 @@
 	</div>
 
 </template>
+<script src="../js/ajax.js"></script>
 <script>
 	export default {
 		name: "addgoods",
