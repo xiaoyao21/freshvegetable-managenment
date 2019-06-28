@@ -146,7 +146,7 @@
 				// console.log(str);
 				return (str.split(",")[0]);
 			},
-			all_shop_push(){
+			allshop_push(){
 				var selects = document.getElementsByClassName("select_all")  //获取的是对象
 				let arr = Array.prototype.slice.call(selects)  //将对象转化为数组
 				if(Object.getOwnPropertyNames(this.shop_choosed).length-1 == this.list.length){  //默认长度为 1
@@ -198,7 +198,6 @@
 		}
 	}
 </script>
-
 <style scoped>
 	@import '../css/sellgoods.css';
 </style>

@@ -42,28 +42,32 @@
 				if (this.choose == true) {
 					this.$http.post("http://xuptyzh.goho.co:30303/superman/rememberMe", data)
 						.then((response) => {
-							if (response.body.state == 0)
+							console.log(response.body)
+							if (response.body.state == -1) {  //账号错误
 								console.log(response.body.desc)
-							else {
+							} else if (response.body.state == 0) {  //密码错误
+								
+							}else{  //登陆成功
 								this.$router.push({
 									path: '/'
 								})
 							}
-							//this.result = response.body;
-							// console.log(this.result);
+							
 						});
 				} else {
 					this.$http.post("http://xuptyzh.goho.co:30303/superman/login", data)
 						.then((response) => {
-							if (response.body.state == 0)
+							console.log(response.body)
+							if (response.body.state == -1) {  //账号错误
 								console.log(response.body.desc)
-							else {
+							} else if (response.body.state == 0) {  //密码错误
+								
+							}else{  //登陆成功
 								this.$router.push({
 									path: '/'
 								})
 							}
-							// this.$router.push({path:'/'})
-							//this.result = response.body;
+							
 						});
 				}
 			}
