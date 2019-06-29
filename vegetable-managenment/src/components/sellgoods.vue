@@ -49,7 +49,7 @@
 					<td><span>{{item.goodsVolume}}</span></td>
 					<td><span>某某供应商</span></td>
 					<td class="model"><span @click="editgoods({num:1,id:item.goodsId})">编辑</span@click="upgoods(
-							 {id:item.goodsId})@click="deletegoods({id:item.goodsId})><span>下架</span><span>删除</span></td>
+							 {id:item.goodsId})"><span>下架</span><span @click="deletegoods({id:item.goodsId})">删除</span></td>
 				  </tr>
 			</template>
 			
@@ -113,7 +113,8 @@
 				this.$router.push({
 					path: "addgoods",
 					query: {
-						num: obj.num
+						num: obj.num,
+						id:obj.id
 					}
 				})
 			},
