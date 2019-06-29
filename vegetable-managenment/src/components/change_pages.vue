@@ -25,10 +25,10 @@
 <script>
 	export default {
 		name: 'change',
-		props:["pagesd"],
+		props: ["pagesd"],
 		data() {
 			return {
-				pages: null,  //传入的参数
+				pages: null, //传入的参数
 				show_left: false,
 				show_right: true,
 				li: null,
@@ -116,13 +116,16 @@
 
 				this.show_right = false;
 				this.show_left = true;
+			},
+			transmit_page() {
+				this.$emit("listen_page", this.currentPage)
 			}
 
 		},
 
 		mounted() {
 			this.pages = this.pagesd;
-			console.log(this.pagesd,this.pages,"hgdjksaghdjkasgdk")
+			console.log(this.pagesd, this.pages, "hgdjksaghdjkasgdk")
 			this.currentPage = 1;
 			this.li = this.$refs.ulul.getElementsByTagName("li")
 		},
@@ -151,15 +154,22 @@
 						this.li[i].className = ""
 					}
 				}
+				this.transmit_page()
 			},
-			pagesd:function(){
-				this.pages=this.pagesd
+			pagesd: function() { //父向子传值
+				this.pages = this.pagesd
 			}
 		}
 	}
 </script>
 
 <style scoped>
+	#change{
+		margin-top: 10px;
+		/* position: absolute;
+		left: 50%;
+		transform: translate(-50%); */
+	}
 	#change li {
 		width: 38px;
 		height: 38px;

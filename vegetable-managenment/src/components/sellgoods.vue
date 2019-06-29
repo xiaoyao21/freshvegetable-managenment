@@ -26,8 +26,8 @@
 			<div class="middle">
 				<img src="../assets/未勾选.png" @click="allshop_push()" class="select_all">
 				<span>全选</span>
-				<button>批量下架</button>
-				<button>批量删除</button>
+				<button @click="down_data()">批量下架</button>
+				<button @click="delete_data()">批量删除</button>
 			</div>
 			<template v-for="(item,index) in list">
 				<tr>
@@ -75,7 +75,7 @@
 				</tr> -->
 		</table>
 
-		<change :pagesd="page"></change>
+		<change :pagesd="page" v-on:listen_page="render_page"></change>
 	</div>
 
 
@@ -96,14 +96,16 @@
 			return {
 				classify: ['蔬菜', '水果', '海鲜', '肉蛋'],
 				supplier: ['某某供应商', '某某供应商', '某某供应商', '某某供应商'],
-				obj: undefined,
-				list: undefined,
-				page: 3,
-				shop_choosed: {},
+				obj: undefined,  //请求过来对应页数的信息
+				list: undefined,  
+				page: 3,       // 点击第几页
+				shop_choosed: {},  //勾选商品，以对象的方式存在{3：3}
 				img: {
 					one: require("../assets/未勾选.png"),
 					two: require("../assets/勾选.png")
-				}
+				},
+				batchdata: [], //下架商品的数组集合
+				page_data:1    //翻页组件请求过来的页数
 			}
 		},
 		methods: {
@@ -132,7 +134,6 @@
 				})
 			},
 			shop_push(num) {
-				// console.log(typeof(num))
 				if (this.shop_choosed[num] == num) {
 					delete this.shop_choosed[num]
 					event.path[0].src = this.img.one
@@ -142,59 +143,71 @@
 				}
 				console.log(this.shop_choosed);
 			},
-			cut_img(str) {
-				// console.log(str);
+			cut_img(str) {  //请求图片的处理
 				return (str.split(",")[0]);
 			},
-			allshop_push(){
-				var selects = document.getElementsByClassName("select_all")  //获取的是对象
-				let arr = Array.prototype.slice.call(selects)  //将对象转化为数组
-				if(Object.getOwnPropertyNames(this.shop_choosed).length-1 == this.list.length){  //默认长度为 1
+			allshop_push() {  //全选按钮
+				var selects = document.getElementsByClassName("select_all") //获取的是对象
+				let arr = Array.prototype.slice.call(selects) //将对象转化为数组
+				if (Object.getOwnPropertyNames(this.shop_choosed).length - 1 == this.list.length) { //默认长度为 1
 					this.shop_choosed = {}
 					event.path[0].src = this.img.one
-					arr.forEach((item)=>{
+					arr.forEach((item) => {
 						item.src = this.img.one
 					})
 
-				}else{
-					this.list.forEach((item)=> {
-					this.shop_choosed[item.goodsId] = item.goodsId
-					event.path[0].src = this.img.two
+				} else {
+					this.list.forEach((item) => {
+						this.shop_choosed[item.goodsId] = item.goodsId
+						event.path[0].src = this.img.two
 					})
-					arr.forEach((item)=>{
+					arr.forEach((item) => {
 						item.src = this.img.two
 					})
 
 				}
+			},
+			down_date() {  //批量下架
+				for (let i in this.shop_choosed) {
+					this.batchdata.push(this.shop_choosed[i])
+				}
+				this.$http.post("http://xuptyzh.goho.co:30303/goods/undercarriage", this.batchdata)
+					.then((response) => {
+						console.log(response)
+					});
+			},
+			delete_data() {  //批量删除
+				for (let i in this.shop_choosed) {
+					this.batchdata.push(this.shop_choosed[i])
+				}
+				this.$http.post("http://xuptyzh.goho.co:30303/goods/delete", this.batchdata)
+					.then((response) => {
+						console.log(response)
+					});
+			},
+			render_page(data) {  //自定义时间，子向父传值传递点击的页数
+				this.page_data=data
+			},
+			goodsquery() {  //根据翻页请求商品的详细信息
+				this.$http.get("http://xuptyzh.goho.co:30303/goods/query/1/"+ this.page_data)
+					.then((response) => {
+						console.log(response.body)
+						this.page = response.body.pages;
+						this.list = response.body.list;
+						console.log()
+					});
 			}
 		},
 		created() {
-			this.page = 8;
-			var global_obj;
-			var xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4) {
-					var status = xhr.status;
-					if (status >= 200 && status < 300) {
-
-						global_obj = JSON.parse(xhr.responseText);
-
-
-					} else {
-
-					}
-				}
-			};
-			xhr.open("get", "http://xuptyzh.goho.co:30303/goods/query/1/1", false);
-			xhr.send(null);
-			this.page = global_obj.pages;
-			this.list = global_obj.list;
-
-			console.log(this.list, '123')
-
+			this.goodsquery()  
 		},
 		mounted() {
 
+		},
+		watch:{
+			page_data(){
+				this.goodsquery()
+			}
 		}
 	}
 </script>

@@ -86,7 +86,7 @@
 					top: ["请输入商品产地", "请输入商品净含量", "请输入商品保质期", "请输入商品保存条件"],
 
 				},
-
+				goods:{}
 			}
 		},
 		methods: {
@@ -105,6 +105,17 @@
 			delete_img(value) {
 				console.log(value)
 				this.pic_list.splice(value, 1);
+			},
+			addgoods(){  //添加新商品
+				this.$http.post("http://xuptyzh.goho.co:30303/goods/insert",data )
+					.then((response) => {
+						console.log(response)
+					});
+			},editgoods(){  //在售商品的编辑
+				this.$http.post("http://xuptyzh.goho.co:30303/goods/update",data )
+					.then((response) => {
+						console.log(response)
+					});
 			}
 		},
 		mounted() {
