@@ -10,7 +10,7 @@
 			<select name="supplier">
 				<option v-for="(supp,index) in supplier" :value=index>{{supp}}</option>
 			</select>
-			<button>筛选</button>
+			<button @click="alert_message()" >筛选</button>
 		</div>
 
 		<table>
@@ -49,7 +49,7 @@
 					<td><span>{{item.goodsVolume}}</span></td>
 					<td><span>某某供应商</span></td>
 					<td class="model"><span @click="editgoods({num:1,id:item.goodsId})">编辑</span@click="upgoods( {id:item.goodsId})"><span>下架</span><span
-							 @click="deletegoods({id:item.goodsId})">删除</span></td>
+							 >删除</span></td>  <!-- @click="deletegoods({id:item.goodsId})" -->
 				</tr>
 			</template>
 
@@ -76,6 +76,7 @@
 		</table>
 
 		<change :pagesd="page" v-on:listen_page="render_page"></change>
+		<alert ref="alert1"></alert>
 	</div>
 
 
@@ -83,6 +84,7 @@
 
 <script>
 	import change from './change_pages'
+	import alert from './alert'   //弹窗组件
 	import {
 		Ajax
 	} from '../js/ajax.js'
@@ -90,7 +92,8 @@
 	export default {
 		name: "sellgoods",
 		components: {
-			change
+			change,
+			alert
 		},
 		data() {
 			return {
@@ -106,6 +109,7 @@
 				},
 				batchdata: [], //下架商品的数组集合
 				page_data: 1 //翻页组件请求过来的页数
+
 			}
 		},
 		methods: {
@@ -127,13 +131,14 @@
 				})
 			},
 			deletegoods(obj) {
-				this.$router.push({
-					path: "addgoods",
-					query: {
-						num: obj.num
-					}
-				})
+				console.log(obj.id)
+				this.$http.delete("http://xuptyzh.goho.co:30303/goods/delete/" + obj.id)
+					.then((response) => {
+						alert("删除")
+						console.log(response)
+					});
 			},
+
 			shop_push(num) {
 				if (this.shop_choosed[num] == num) {
 					delete this.shop_choosed[num]
@@ -197,6 +202,7 @@
 				this.page_data = data
 			},
 			goodsquery() { //根据翻页请求商品的详细信息
+			// shop_choosed={}
 				this.$http.get("http://xuptyzh.goho.co:30303/goods/query/1/" + this.page_data)
 					.then((response) => {
 						console.log(response.body)
@@ -204,6 +210,13 @@
 						this.list = response.body.list;
 						console.log()
 					});
+			},
+			alert_message(){
+				var obj={
+					id:1,
+					state:2
+				}
+				this.$refs.alert1.handleParentClick(obj)
 			}
 		},
 		created() {
@@ -213,7 +226,7 @@
 
 		},
 		watch: {
-			page_data() {
+			page_data:function() {
 				this.goodsquery()
 			}
 		}

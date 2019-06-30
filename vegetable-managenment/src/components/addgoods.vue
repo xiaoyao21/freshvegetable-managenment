@@ -56,7 +56,7 @@
 				<img src="../assets/勾选.png" @click="one=!one" v-else />
 
 				<span>是否加入促销（元）</span><br><br>
-				<input type="text" value="" class="dit-right" placeholder="请输入报销价" ><br><br>
+				<input type="text" value="" class="dit-right" placeholder="请输入报销价"><br><br>
 				<img src="../assets/未勾选.png" @click="two=!two" v-if="two" />
 				<img src="../assets/勾选.png" @click="two=!two" v-else />
 
@@ -95,7 +95,7 @@
 					goodDate: "", //保质期
 					goodKeep: "冷藏", //存储方式
 					// goodsDesc: "营养丰富，味道可口",
-					file: "", //图片
+					// file:[], //图片
 					goodsName: "", //商品名称
 					goodsNum: "", //库存
 					goodsPrice: 21478.3, //价格
@@ -123,20 +123,33 @@
 				this.pic_list.splice(value, 1);
 			},
 			addgoods() { //添加新商品
-			console.log(this.goodsDeteil2)
-			this.goodsDeteil2.goodsPrice=parseFloat(this.goodsDeteil2.goodsPrice)
-			// console.log(typeof(this.goodsDeteil2.goodsPrice))
-			this.goodsDeteil2.goodsNum=parseInt(this.goodsDeteil2.goodsNum)
-			this.goodsDeteil2.goodsVolume=parseInt(this.goodsDeteil2.goodsVolume)
-			this.goodsDeteil2.goodsCountent=parseInt(this.goodsDeteil2.goodsCountent)
-			this.goodsDeteil2.goodsData=parseInt(this.goodsDeteil2.goodsData)
+				// console.log(this.goodsDeteil2)
+				this.goodsDeteil2.goodsPrice = parseFloat(this.goodsDeteil2.goodsPrice)
+				// console.log(typeof(this.goodsDeteil2.goodsPrice))
+				this.goodsDeteil2.goodsNum = parseInt(this.goodsDeteil2.goodsNum)
+				this.goodsDeteil2.goodsVolume = parseInt(this.goodsDeteil2.goodsVolume)
+				this.goodsDeteil2.goodsCountent = parseInt(this.goodsDeteil2.goodsCountent)
+				this.goodsDeteil2.goodsData = parseInt(this.goodsDeteil2.goodsData)
+				// 	
+
+				let data = {
+					file: this.pic_list,
+					goodsName: this.goodsDeteil2.goodsName
+				}
+				this.$http.post('http://xuptyzh.goho.co:30303goods/doImg', data, {
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					}
+				}).then((response) => {
+						console.log(response)
+					});
 				this.$http.post("http://xuptyzh.goho.co:30303/goods/insert", this.goodsDeteil2)
 					.then((response) => {
 						console.log(response)
 					});
 			},
 			editgoods() { //在售商品的编辑
-			this.goodsDeteil2._method = "put"
+				this.goodsDeteil2._method = "put"
 				this.$http.post("http://xuptyzh.goho.co:30303/goods/update", this.goodsDeteil2)
 					.then((response) => {
 						console.log(response)
@@ -145,10 +158,15 @@
 			detail_goods() { //请求商品的详细信息
 				this.$http.get("http://xuptyzh.goho.co:30303/goods/queryById/" + this.goodsId)
 					.then((response) => {
-						this.goodsDetail = response.body
+						this.goodsDetail2 = response.body
+						console.log(this.goodsDetail2);
+						this.left.message = [this.goodsDeteil2.goodArea, this.goodsDeteil2.goodContent, this.goodsDeteil2.goodDate, this.goodsDeteil2
+							.goodKeep
+						]
 					});
 			},
 			judge_router() { //判断路由 执行渲染操作
+			console.log(this.number,"进来了")
 				if (this.number == 0) {
 					this.goodsDeteil2 = this.goodsDeteil1
 					this.left.message = [this.goodsDeteil2.goodArea, this.goodsDeteil2.goodContent, this.goodsDeteil2.goodDate, this.goodsDeteil2
@@ -156,16 +174,15 @@
 					]
 					console.log("000")
 				} else if (this.number == 1) {
-					// this.detail_goods();
-					editgoods()
-					this.goodsDeteil2 = {}
-					this.left.message = [this.goodsDeteil2.goodArea, this.goodsDeteil2.goodContent, this.goodsDeteil2.goodDate, this.goodsDeteil2
-						.goodKeep
-					]
+					this.detail_goods();  //请求商品的详细信息
+					 // console.log(this.goodsDetail2);
+					// this.editgoods()
+					//this.goodsDeteil2 = {}
+					
 					console.log("11111")
 				} else if (this.number == 2) {
 					// this.detail_goods();
-					
+
 					console.log("22222")
 				}
 			}

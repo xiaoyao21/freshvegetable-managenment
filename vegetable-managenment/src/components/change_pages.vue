@@ -120,6 +120,7 @@
 			transmit_page() {
 				this.$emit("listen_page", this.currentPage)
 			}
+			
 
 		},
 
@@ -131,6 +132,7 @@
 		},
 		watch: {
 			currentPage: function(val) {
+
 				if (this.currentPage == 1) {
 					this.style.one = true;
 					this.style.two = false;
@@ -146,14 +148,26 @@
 					this.style1.one1 = false;
 					this.style1.two1 = true;
 				}
+				if (this.pages <5) {
+					for (var i = 0; i < this.pages; i++) {
 
-				for (var i = 0; i < 5; i++) {
-					if (this.li[i].innerHTML == val) {
-						this.li[i].className = "sty"
-					} else {
-						this.li[i].className = ""
+						if (this.li[i].innerHTML == val) {
+							this.li[i].className = "sty"
+						} else {
+							this.li[i].className = ""
+						}
+					}
+				} else {
+					for (var i = 0; i < 5; i++) {
+
+						if (this.li[i].innerHTML == val) {
+							this.li[i].className = "sty"
+						} else {
+							this.li[i].className = ""
+						}
 					}
 				}
+
 				this.transmit_page()
 			},
 			pagesd: function() { //父向子传值
@@ -164,12 +178,13 @@
 </script>
 
 <style scoped>
-	#change{
+	#change {
 		margin-top: 10px;
 		/* position: absolute;
 		left: 50%;
 		transform: translate(-50%); */
 	}
+
 	#change li {
 		width: 38px;
 		height: 38px;
