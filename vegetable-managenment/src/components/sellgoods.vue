@@ -48,11 +48,11 @@
 					<td><span>{{item.goodsNum}}</span></td>
 					<td><span>{{item.goodsVolume}}</span></td>
 					<td><span>某某供应商</span></td>
-					<td class="model"><span @click="editgoods({num:1,id:item.goodsId})">编辑</span@click="upgoods(
-							 {id:item.goodsId})"><span>下架</span><span @click="deletegoods({id:item.goodsId})">删除</span></td>
-				  </tr>
+					<td class="model"><span @click="editgoods({num:1,id:item.goodsId})">编辑</span@click="upgoods( {id:item.goodsId})"><span>下架</span><span
+							 @click="deletegoods({id:item.goodsId})">删除</span></td>
+				</tr>
 			</template>
-			
+
 			<!-- <tr>
 				<td class="
 							 goodsname">
@@ -96,16 +96,16 @@
 			return {
 				classify: ['蔬菜', '水果', '海鲜', '肉蛋'],
 				supplier: ['某某供应商', '某某供应商', '某某供应商', '某某供应商'],
-				obj: undefined,  //请求过来对应页数的信息
-				list: undefined,  
-				page: 3,       // 点击第几页
-				shop_choosed: {},  //勾选商品，以对象的方式存在{3：3}
+				obj: undefined, //请求过来对应页数的信息
+				list: undefined,
+				page: 3, // 点击第几页
+				shop_choosed: {}, //勾选商品，以对象的方式存在{3：3}
 				img: {
 					one: require("../assets/未勾选.png"),
 					two: require("../assets/勾选.png")
 				},
 				batchdata: [], //下架商品的数组集合
-				page_data:1    //翻页组件请求过来的页数
+				page_data: 1 //翻页组件请求过来的页数
 			}
 		},
 		methods: {
@@ -114,7 +114,7 @@
 					path: "addgoods",
 					query: {
 						num: obj.num,
-						id:obj.id
+						id: obj.id
 					}
 				})
 			},
@@ -144,10 +144,17 @@
 				}
 				console.log(this.shop_choosed);
 			},
-			cut_img(str) {  //请求图片的处理
-				return (str.split(",")[0]);
+			cut_img(str) { //请求图片的处理
+				if (str == null) {
+					return (str = require("../assets/蔬菜.png"))
+				}
+				if (str.search(",") != -1) {
+					return (str.split(",")[0]);
+				} else {
+					return (str)
+				}
 			},
-			allshop_push() {  //全选按钮
+			allshop_push() { //全选按钮
 				var selects = document.getElementsByClassName("select_all") //获取的是对象
 				let arr = Array.prototype.slice.call(selects) //将对象转化为数组
 				if (Object.getOwnPropertyNames(this.shop_choosed).length - 1 == this.list.length) { //默认长度为 1
@@ -168,7 +175,7 @@
 
 				}
 			},
-			down_date() {  //批量下架
+			down_date() { //批量下架
 				for (let i in this.shop_choosed) {
 					this.batchdata.push(this.shop_choosed[i])
 				}
@@ -177,7 +184,7 @@
 						console.log(response)
 					});
 			},
-			delete_data() {  //批量删除
+			delete_data() { //批量删除
 				for (let i in this.shop_choosed) {
 					this.batchdata.push(this.shop_choosed[i])
 				}
@@ -186,11 +193,11 @@
 						console.log(response)
 					});
 			},
-			render_page(data) {  //自定义时间，子向父传值传递点击的页数
-				this.page_data=data
+			render_page(data) { //自定义时间，子向父传值传递点击的页数
+				this.page_data = data
 			},
-			goodsquery() {  //根据翻页请求商品的详细信息
-				this.$http.get("http://xuptyzh.goho.co:30303/goods/query/1/"+ this.page_data)
+			goodsquery() { //根据翻页请求商品的详细信息
+				this.$http.get("http://xuptyzh.goho.co:30303/goods/query/1/" + this.page_data)
 					.then((response) => {
 						console.log(response.body)
 						this.page = response.body.pages;
@@ -200,13 +207,13 @@
 			}
 		},
 		created() {
-			this.goodsquery()  
+			this.goodsquery()
 		},
 		mounted() {
 
 		},
-		watch:{
-			page_data(){
+		watch: {
+			page_data() {
 				this.goodsquery()
 			}
 		}
